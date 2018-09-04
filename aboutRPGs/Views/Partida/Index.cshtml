@@ -1,0 +1,30 @@
+@model PartidaViewModel
+
+@{
+    ViewData["Title"] = "Partidas de ADR ZonaZero";
+}
+
+<div class="text-center">
+    <h1 class="display-4">@ViewData["Title"]</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <table class="table table-hover">
+        <thead>   
+            <tr>
+                <td>:D</td>
+                <td>Partida</td>
+                <td>Juego</td>
+                <td>Fecha</td>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model.Partidas) {
+            <tr>
+                <td>@item.title</td>
+                <td>@item.game</td>
+                <td>@item.meet</td>
+            </tr>
+        }
+
+    </table>
+</div>
