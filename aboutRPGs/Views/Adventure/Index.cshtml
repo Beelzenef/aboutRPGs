@@ -1,0 +1,31 @@
+@model AdventureViewModel;
+
+@{
+    ViewData["Title"] = "Adventures to come";
+}
+
+<div class="panel panel-default todo-panel">
+  <div class="panel-heading">@ViewData["Title"]</div>
+
+  <table class="table table-hover">
+      <thead>
+          <tr>
+              <td>Partida</td>
+              <td>Fecha</td>
+              <td>Juego</td>
+          </tr>
+      </thead>
+      
+      @foreach (var item in Model.adventures)
+      {
+          <tr>
+              <td>@item.title</td>
+              <td>@item.meet</td>
+              <td>@item.game</td>
+          </tr>
+      }
+  </table>
+  
+
+
+</div>

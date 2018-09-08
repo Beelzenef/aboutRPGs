@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using aboutRPGs.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using aboutRPGs.Services;
 
 namespace aboutRPGs
 {
@@ -41,6 +42,9 @@ namespace aboutRPGs
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            // adding my own services
+            services.AddSingleton<IAdventureService, AdventureService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
