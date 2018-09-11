@@ -5,5 +5,6 @@ using aboutRPGs.Models;
 namespace aboutRPGs.Services {
     public interface IAdventureService {
         Task<Adventure[]> getAdventuresAsync();
+        Task<Adventure[]> getOngoingAdventuresAsync();
     }
 }

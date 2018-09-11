@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using aboutRPGs.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,5 +13,7 @@ namespace aboutRPGs.Data
             : base(options)
         {
         }
+
+        public DbSet<Adventure> Adventures { get; set; }
     }
 }

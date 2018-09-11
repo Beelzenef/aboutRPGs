@@ -44,7 +44,8 @@ namespace aboutRPGs
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // adding my own services
-            services.AddSingleton<IAdventureService, AdventureService>();
+            //services.AddSingleton<IAdventureService, AdventureService>();
+            services.AddScoped<IAdventureService, AdventureService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
