@@ -13,13 +13,24 @@ namespace aboutRPGs.Controllers {
             adventureService = service;
         }
         public async Task<IActionResult> Index() {
-            var items = await adventureService.getAdventuresAsync();
+            var items = await adventureService.getOngoingAdventuresAsync();
 
             var model = new AdventureViewModel() {
                 adventures = items
             };
 
             return View(model);
+        }
+
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddAventure(Adventure adv) {
+            if (!ModelState.IsValid) {
+                return RedirectToAction("Index");
+            }
+
+            var success = await adventureService.AddAdventure(adv);
+            if (!success) return BadRequest(new {error = "not adding the adventure"});
+            return RedirectToAction("Index");
         }
     }
 }

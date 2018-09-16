@@ -33,6 +33,14 @@ class AdventureService : IAdventureService
     }
 
     public async Task<Adventure[]> getOngoingAdventuresAsync() {
-        return await context.Adventures.Where(x => x.title == "Reinos de Hierro").ToArrayAsync(); 
+        return await context.Adventures.Where(x => true).ToArrayAsync(); 
+    }
+
+    public async Task<bool> AddAdventure(Adventure adv) {
+        adv.id = Guid.NewGuid();
+        adv.meet = DateTimeOffset.Now.AddDays(1);
+
+        context.Adventures.Add(adv);
+        return (await context.SaveChangesAsync() == 1);
     }
 }
