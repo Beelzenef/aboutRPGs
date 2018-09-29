@@ -9,11 +9,12 @@ using Microsoft.EntityFrameworkCore;
 class AdventureService : IAdventureService
 {
     private readonly aboutRPGs.Data.ApplicationDbContext context;
-    public AdventureService(aboutRPGs.Data.ApplicationDbContext context) {
+    public AdventureService(aboutRPGs.Data.ApplicationDbContext context)
+    {
         this.context = context;
     }
 
-    // fake method, deprecated like
+    /* fake method, deprecated like
     public Task<Adventure[]> getAdventuresAsync()
     {
         var adv1 = new Adventure
@@ -31,16 +32,21 @@ class AdventureService : IAdventureService
         return Task.FromResult(new[] { adv1, adv2 });
 
     }
+    */
 
-    public async Task<Adventure[]> getOngoingAdventuresAsync() {
-        return await context.Adventures.Where(x => true).ToArrayAsync(); 
+    public async Task<Adventure[]> getOngoingAdventuresAsync()
+    {
+        return await context.Adventures.Where(x => true).ToArrayAsync();
     }
 
-    public async Task<bool> AddAdventure(Adventure adv) {
+    public async Task<bool> AddAdventure(Adventure adv)
+    {
         adv.id = Guid.NewGuid();
         adv.meet = DateTimeOffset.Now.AddDays(1);
 
         context.Adventures.Add(adv);
-        return (await context.SaveChangesAsync() == 1);
+        
+        var result = await context.SaveChangesAsync();
+        return (result == 1);
     }
 }

@@ -18,14 +18,13 @@ namespace aboutRPGs.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Adventures", x => x.id);
+                    table.PrimaryKey("PK_Items", x => x.id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Adventures");
+            migrationBuilder.DropTable(name: "Adventures");
         }
     }
 }

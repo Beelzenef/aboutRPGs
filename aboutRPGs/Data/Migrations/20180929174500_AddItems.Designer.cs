@@ -9,8 +9,8 @@ using aboutRPGs.Data;
 namespace aboutRPGs.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180911200350_AddAdventures")]
-    partial class AddAdventures
+    [Migration("20180929174500_AddItems")]
+    partial class AddItems
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,23 @@ namespace aboutRPGs.Data.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Adventures");
+                });
+
+            modelBuilder.Entity("aboutRPGs.Models.TodoItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTimeOffset?>("DueAt");
+
+                    b.Property<bool>("IsDone");
+
+                    b.Property<string>("Title")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Items");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

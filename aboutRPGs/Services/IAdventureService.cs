@@ -6,7 +6,7 @@ namespace aboutRPGs.Services
 {
     public interface IAdventureService
     {
-        Task<Adventure[]> getAdventuresAsync();
+        //Task<Adventure[]> getAdventuresAsync();
         Task<Adventure[]> getOngoingAdventuresAsync();
         Task<bool> AddAdventure(Adventure adv);
     }

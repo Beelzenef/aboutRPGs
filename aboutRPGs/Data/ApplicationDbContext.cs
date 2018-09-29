@@ -15,5 +15,6 @@ namespace aboutRPGs.Data
         }
 
         public DbSet<Adventure> Adventures { get; set; }
+        public DbSet<TodoItem> Items { get; set; }
     }
 }

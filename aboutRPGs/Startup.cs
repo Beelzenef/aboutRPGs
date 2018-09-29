@@ -45,7 +45,9 @@ namespace aboutRPGs
 
             // adding my own services
             //services.AddSingleton<IAdventureService, AdventureService>();
-            services.AddScoped<IAdventureService, AdventureService>();
+            //services.AddScoped<IAdventureService, AdventureService>();
+            //services.AddSingleton<ITodoItemService, FakeTodoItemService>();
+            services.AddScoped<ITodoItemService, TodoItemService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
