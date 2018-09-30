@@ -1,4 +1,5 @@
 
+using System;
 using System.Threading.Tasks;
 using aboutRPGs.Models;
 
@@ -8,5 +9,6 @@ namespace aboutRPGs.Services
     {
         Task<TodoItem[]> GetIncompleteItemAsync();
         Task<bool> AddItemAsync(TodoItem newItem);
+        Task<bool> MarkAsDoneItem(Guid id);
     }
 }

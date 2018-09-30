@@ -34,5 +34,19 @@ namespace aboutRPGs.Services
                 .Where(x => x.IsDone == false)
                 .ToArrayAsync();
         }
+
+        public async Task<bool> MarkAsDoneItem(Guid id)
+        {
+            var item = await _context.Items
+                .Where(x => x.Id == id)
+                .SingleOrDefaultAsync();
+            
+            if (item == null) return false;
+
+            item.IsDone = true;
+
+            var result = await _context.SaveChangesAsync();
+            return result == 1;
+        }
     }
 }

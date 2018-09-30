@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using aboutRPGs.Models;
 using aboutRPGs.Services;
@@ -37,6 +38,21 @@ namespace aboutRPGs.Controllers
             if (!succesful)
             {
                 return BadRequest("could not add item");
+            }
+            return RedirectToAction("Index");
+        }
+
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> MarkDone(Guid id) {
+            if (id == Guid.Empty)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var succesful = await _todoItemService.MarkAsDoneItem(id);
+            if (!succesful)
+            {
+                return BadRequest("could not complete this item");
             }
             return RedirectToAction("Index");
         }
